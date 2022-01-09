@@ -5,7 +5,7 @@ pub trait Geometry {
     }
 }
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug)]
 pub struct Rectangle {
     pub width: u32,
     pub height: u32,
@@ -20,7 +20,7 @@ impl Geometry for Rectangle {
     }
 }
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug)]
 pub struct Triangle {
     pub bottom: u32,
     pub height: u32,
