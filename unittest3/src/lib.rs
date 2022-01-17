@@ -44,59 +44,57 @@ mod tests {
 
     speculate! {
         describe "IntClosedRangeは整数閉区間を表す" {
+            #[fixture]
+            fn fixture() -> IntClosedRange {
+                IntClosedRange::new(3,7)
+            }
+
             describe "IntClosedRangeは下端点と上端点を持つ" {
                 it "下端点は3を返す" {
                     #[rstest]
-                    fn lower() {
-                        let range = IntClosedRange::new(3, 7);
-                        assert_eq!(3, range.lower);
+                    fn lower(fixture: IntClosedRange) {
+                        assert_eq!(3, fixture.lower);
                     }
                 }
                 it "上端点は7を返す" {
                     #[rstest]
-                    fn upper() {
-                        let range = IntClosedRange::new(3, 7);
-                        assert_eq!(7, range.upper);
+                    fn upper(fixture: IntClosedRange) {
+                        assert_eq!(7, fixture.upper);
                     }
                 }
             }
             describe "IntClosedRangeは整数閉区間の文字列表記を返す" {
                 #[rstest]
-                fn noation() {
-                    let range = IntClosedRange::new(3, 7);
-                    assert_eq!("[3, 7]", range.noation());
+                fn noation(fixture: IntClosedRange) {
+                    assert_eq!("[3, 7]", fixture.noation());
                 }
             }
             describe "IntClosedRangeは指定した整数を含むか判定できる" {
                 it "下端点の境界値を含む" {
                     #[rstest]
-                    fn includes_true() {
-                        let range = IntClosedRange::new(3, 7);
-                        assert_eq!(true, range.includes(3))
+                    fn includes_true(fixture: IntClosedRange) {
+                        assert_eq!(true, fixture.includes(3))
                     }
                 }
 
                 it "下端点の境界値を含まない" {
                     #[rstest]
-                    fn includes_true() {
-                        let range = IntClosedRange::new(3, 7);
-                        assert_eq!(false, range.includes(2))
+                    fn includes_true(fixture: IntClosedRange) {
+                        assert_eq!(false, fixture.includes(2))
                     }
                 }
 
                 it "上端点の境界値を含む" {
                     #[rstest]
-                    fn includes_true() {
-                        let range = IntClosedRange::new(3, 7);
-                        assert_eq!(true, range.includes(7))
+                    fn includes_true(fixture: IntClosedRange) {
+                        assert_eq!(true, fixture.includes(7))
                     }
                 }
 
                 it "上端点の境界値を含まない" {
                     #[rstest]
-                    fn includes_true() {
-                        let range = IntClosedRange::new(3, 7);
-                        assert_eq!(false, range.includes(8))
+                    fn includes_true(fixture: IntClosedRange) {
+                        assert_eq!(false, fixture.includes(8))
                     }
                 }
             }
