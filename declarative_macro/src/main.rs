@@ -1,6 +1,8 @@
 macro_rules! foo {
-    () => {};
+    ($x:expr) => {
+        println!("{}", $x)
+    };
 }
 fn main() {
-    foo!();
+    foo!(1 + 2);
 }
